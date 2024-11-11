@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='estils.css'>
+    <title>Opció A</title>
+</head>
+<body>
+    
+    <h3>Problema</h3>
+
+    <div class="contingut">
+        Text<input type="text" id="text">
+        <br>
+        <br>
+        Caracter<input type="text" id="busquedaCaracter">
+        <br>
+        <button onclick="trobarParaula()">INICIAR</button>
+        <p id="vegadesParaules"></p>
+        <p id="resultatParaules"></p> 
+    </div>
+
+    <script>
+
+function trobarParaula() {
+    let text = document.getElementById("text").value;
+            let busquedaCaracter = document.getElementById("busquedaCaracter").value;
+            let textEnMinusculas = text.toLowerCase();
+            let busquedaCaracterMinusculas = busquedaCaracter.toLowerCase();
+
+            let numeroParaules = 0;
+            let paraules = textEnMinusculas.split(/\s+/); 
+            
+            let paraulesQueContenenCaracter = paraules.filter(paraula => paraula.includes(busquedaCaracterMinusculas));
+
+
+if (paraulesQueContenenCaracter.length > 0) {
+    document.getElementById("resultatParaules").innerText = "Les paraules que contenen el caràcter '" + busquedaCaracter + "' són: " + paraulesQueContenenCaracter;
+    document.getElementById("vegadesParaules").innerText = busquedaCaracter + " apareix en " + paraulesQueContenenCaracter.length + " paraules.";
+} else {
+    document.getElementById("resultatParaules").innerText = "No s'han trobat paraules que continguin el caràcter '" + busquedaCaracter + "'.";
+    document.getElementById("vegadesParaules").innerText = "";
+}
+}
+
+    </script>
+
+</body>
+</html>
